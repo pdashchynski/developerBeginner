@@ -1,0 +1,12 @@
+# Ignore everything but apex code, readme, gitignore and sfdx
+/*
+!.gitignore
+!README.md
+!sfdx-project.json
+!/force-app/
+/force-app/*
+!/force-app/main/
+/force-app/main/*
+!/force-app/main/default
+/force-app/main/default/*
+!/force-app/main/default/classes
