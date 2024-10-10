@@ -1,12 +1,12 @@
-public without sharing class Scheduler implements Schedulable{
+public without sharing class RemindContactOwnersBatchScheduler implements Schedulable{
 
     public void execute(SchedulableContext sc) {
-        RemindContactOwners batch = new RemindContactOwners();
+        RemindContactOwnersBatch batch = new RemindContactOwnersBatch();
         Database.executeBatch(batch, 200);
     }
 
     public static void schedule() {
-        Scheduler scheduler = new Scheduler();
+        RemindContactOwnersBatchScheduler scheduler = new RemindContactOwnersBatchScheduler();
         String cronExp = '0 0 8 * * ?';
         System.schedule('Daily Outdated Contacts Batch', cronExp, scheduler);
     }

@@ -1,12 +1,10 @@
-public without sharing class EmailComposer {
-    public EmailComposer() {}
+public without sharing class OutdatedContactsEmailManager {
 
-    public static void composeAndSend(Map<Id, List<Contact>> ownerContactsMap) {
+    public static void composeAndSendEmail(Map<String, List<Contact>> ownerContactsMap) {
         List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
-        for (Id ownerId : ownerContactsMap.keySet()) {
-            List<Contact> contacts = ownerContactsMap.get(ownerId);
-            String ownerEmail = contacts[0].Owner.Email;
+        for (String ownerEmail : ownerContactsMap.keySet()) {
+            List<Contact> contacts = ownerContactsMap.get(ownerEmail);
 
             String emailBody = 'Contacts that need review:<br/>';
             for (Contact c : contacts) {
